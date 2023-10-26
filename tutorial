@@ -1,0 +1,157 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package lab2fop;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+import java.util.Random;
+
+        
+        
+public class Lab2fop {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        
+        Scanner ques = new Scanner(System.in);
+        System.out.println("Which question's answer do you want to see? Enter a number from 1 to 6:");
+        int question = ques.nextInt();
+        switch(question){
+            case 1:
+                ques1();
+                break;
+            case 2:
+                ques2();
+                break;
+            case 3:
+                ques3();
+                break;
+            case 4:
+                ques4();
+                break;
+            case 5:
+                ques5();
+                break;
+            case 6:
+                ques6();
+                break;
+            default:
+                System.out.println("Invalid question number. Please enter a number from 1 to 6.");
+        }
+    }
+        
+        public static void ques1(){
+        //question 1
+        System.out.println("Enter degree in Farenheit : ");
+        Scanner q1 = new Scanner(System.in);
+        float farenheit = q1.nextFloat();
+        double celcius = (farenheit-32)/1.8;
+        
+        DecimalFormat twodecimal = new DecimalFormat("#.##");
+        String c =twodecimal.format(celcius);
+        System.out.println(farenheit+" Farenheit in Celcius is "+c);
+        }
+        
+        public static void ques2(){
+        //question 2
+        Scanner q2 = new Scanner(System.in);
+        System.out.println("Price of the car : ");
+        float price = q2.nextFloat();
+        System.out.println("Downpayment : ");
+        float down = q2.nextFloat();
+        System.out.println("Interest rate in % : ");
+        float interest = q2.nextFloat();
+        System.out.println("Loan duration in a year : ");
+        float duration = q2.nextFloat();
+        double monthly = (price - down)*(1+interest*duration/100)/(duration*12);
+        System.out.println("Monthly payment is : "+monthly);
+        }
+        
+        public static void ques3(){
+        //question 3
+        Scanner q3 = new Scanner(System.in);
+        int lowerBound = 10;
+        int upperBound = 50;
+        int rand1,rand2,rand3;
+        
+        Random random = new Random();
+        rand1 = random.nextInt(10,50);
+        rand2 = random.nextInt(10,50);
+        rand3 = random.nextInt(10,50);
+        System.out.println("Random number 1: " + rand1);
+        System.out.println("Random number 2: " + rand2);
+        System.out.println("Random number 3: " + rand3);
+        double sum = rand1+rand2+rand3;
+        System.out.println("Sum of the number is : "+sum);
+        double average = sum /3;
+        DecimalFormat twodecimal = new DecimalFormat("#.##");
+        String a = twodecimal.format(average);
+        System.out.println("Average of the number is : "+a);
+        }
+        
+        
+        public static void ques4(){
+        //question 4
+        System.out.println("Enter time in seconds :");
+        Scanner q4 = new Scanner(System.in);
+        double sec;
+        double min=0;
+        double hour=0;
+        sec = q4.nextDouble();
+        while(sec>=3600){
+            sec-=3600;
+            hour++;
+        }
+        while(sec>=60){
+            sec-=60;
+            min++;
+        }
+        System.out.println("The period is "+hour+" hour, "+min+"min, "+sec+"seconds");
+        }
+        
+        
+        public static void ques5(){
+        //question 5
+        int summ=0;
+        Random random = new Random();
+        int rand= random.nextInt(0,1000);
+        System.out.println("The random number is : "+rand);
+        String strand = String.valueOf(rand);
+        for (int i = 0; i < strand.length(); i++) {
+            int digit = Character.getNumericValue(strand.charAt(i));
+            System.out.println("Digit at position " + (i + 1) + ": " + digit);
+            summ += digit;
+        }
+        System.out.println("Sum of all digits: " + summ);
+        }
+        
+        
+        
+        
+        public static void ques6(){
+        //question 6
+        Scanner q6 = new Scanner(System.in);
+        double Q;
+        double M;
+        
+        System.out.println("Enter the amount of water in gram : ");
+        double m = q6.nextDouble();
+        M = m/1000;
+        System.out.println("Enter the initial temperature in farenheit : ");
+        double initialtemp = q6.nextDouble();
+        System.out.println("Enter the final temperature in farenheit : ");
+        double finaltemp = q6.nextDouble();
+        
+        double celciusfinal = (finaltemp-32)/1.8;
+        double celciusinitial = (initialtemp-32)/1.8;
+        Q=M*(celciusfinal-celciusinitial)*4184;
+        DecimalFormat scientificFormat = new DecimalFormat("0.###E0");
+        String qe = scientificFormat.format(Q);
+        System.out.println("Energy needed is : "+qe);
+        }
+        
+    }
